@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template/template.xhtml">
+
+            <ui:define name="conteudo">
+                <h:form>
+
+                    <h:panelGrid columns="2" >
+                        <h:outputLabel value="Nome: " />
+                        <p:inputText value="#{eventoBean.evento.nome}"  />
+
+                        <h:outputLabel value="Descrição: " />
+                        <p:inputText value="#{eventoBean.evento.descricao}"  />
+                    </h:panelGrid>
+                   
+                    <p:commandButton action="#{eventoBean.salvar}" value="Salvar" update="tableEventos"/>
+
+                    <p:dataTable id="tableEventos" var="evento" value="#{eventoBean.eventos}">  
+                        
+                        <p:column headerText="Nome">  
+                            <h:outputText value="#{evento.nome}" />  
+                        </p:column>  
+
+                        <p:column headerText="Descrição">  
+                            <h:outputText value="#{evento.descricao}" />  
+                        </p:column>  
+                        
+                        <p:column headerText="Excluir">  
+                            <p:commandButton action="#{eventoBean.excluir(evento)}" value="Excluir" update="@form" />
+                        </p:column>  
+
+                    </p:dataTable>  
+
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

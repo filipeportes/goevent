@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.gojava</groupId>
+    <artifactId>goevent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>GoEvent - Sistema de Controle de Eventos</name>
+    <packaging>pom</packaging>
+  
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>2.1.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <supportedProjectTypes>
+                            <supportedProjectType>ejb</supportedProjectType>
+                            <supportedProjectType>war</supportedProjectType>
+                            <supportedProjectType>bundle</supportedProjectType>
+                            <supportedProjectType>jar</supportedProjectType>
+                        </supportedProjectTypes>
+                        <instructions>
+                            <!-- Read all OSGi configuration info from this optional file -->
+                            <_include>-osgi.properties</_include>
+                            <!-- By default, we don't export anything -->
+                            <Export-Package>!*.impl.*, *</Export-Package>
+                            <Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
+                            <Embed-Transitive>true</Embed-Transitive>
+                            <Embed-StripVersion>false</Embed-StripVersion>
+                            <Embed-StripGroup>true</Embed-StripGroup>
+c                        
+                        </instructions>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>bundle-manifest</id>
+                            <phase>process-classes</phase>
+                            <goals>
+                                <goal>manifest</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>bundle-install</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>install</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin> <!-- Need to use this plugin to build war files -->
+                    <artifactId>maven-war-plugin</artifactId>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <!-- Use version 2.1-beta-1, as it supports the new property failOnMissingWebXml -->
+                    <version>2.1.1</version>
+                    <configuration>
+                        <outputDirectory>${glassfish.autodeploy}</outputDirectory>
+                        <archive>
+                            <!-- add bundle plugin generated manifest to the jar -->
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                           <!-- For some reason, adding Bundle-ClassPath in maven-bundle-plugin
+                            confuses that plugin and it generates wrong Import-Package, etc.
+                            So, we generate it here.
+                            -->
+                            <manifestEntries>
+                                <Bundle-ClassPath>WEB-INF/classes/</Bundle-ClassPath>
+                            </manifestEntries>
+                        </archive>
+                    <!-- We don't have a web.xml -->
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <outputDirectory>${glassfish.autodeploy}</outputDirectory>
+                        <archive>
+                            <!-- add bundle plugin generated manifest to the jar -->
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin> <!-- Need to use this plugin to build ejb-jar files -->
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <version>2.3</version>
+                    <configuration>
+                        <ejbVersion>3.1</ejbVersion>
+                        <archive>
+                            <!-- add bundle plugin generated manifest to the war -->
+                            <manifestFile>
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                            </manifestFile>
+                            <manifestEntries>
+                                <Export-EJB>ALL</Export-EJB>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.6</version>
+            </plugin>
+            <plugin>
+                <!-- Enable this plugin for all modules -->
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <modules>
+        <module>event</module>
+    </modules>
+    
+    <properties>
+        <glassfish.autodeploy>C:\Users\fportes\Documents</glassfish.autodeploy>
+    </properties>
+    
+</project>
