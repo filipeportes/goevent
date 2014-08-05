@@ -1,10 +1,11 @@
+package org.gojava.goevent.evento.event_view.bean;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.gojava.goevent.event.event_view.impl;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;

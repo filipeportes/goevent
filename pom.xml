@@ -27,12 +27,8 @@
                             <!-- Read all OSGi configuration info from this optional file -->
                             <_include>-osgi.properties</_include>
                             <!-- By default, we don't export anything -->
-                            <Export-Package>!*.impl.*, *</Export-Package>
+                            <Export-Package>!*.impl.*, org.gojava.*</Export-Package>
                             <Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
-                            <Embed-Transitive>true</Embed-Transitive>
-                            <Embed-StripVersion>false</Embed-StripVersion>
-                            <Embed-StripGroup>true</Embed-StripGroup>
-c                        
                         </instructions>
                     </configuration>
                     <executions>
@@ -58,7 +54,6 @@ c
                     <!-- Use version 2.1-beta-1, as it supports the new property failOnMissingWebXml -->
                     <version>2.1.1</version>
                     <configuration>
-                        <outputDirectory>${glassfish.autodeploy}</outputDirectory>
                         <archive>
                             <!-- add bundle plugin generated manifest to the jar -->
                             <manifestFile>
@@ -79,7 +74,6 @@ c
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
                     <configuration>
-                        <outputDirectory>${glassfish.autodeploy}</outputDirectory>
                         <archive>
                             <!-- add bundle plugin generated manifest to the jar -->
                             <manifestFile>
@@ -109,8 +103,8 @@ c
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>1.6</source>
+                        <target>1.6</target>
                     </configuration>
                 </plugin>
             </plugins>
@@ -130,8 +124,8 @@ c
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -139,10 +133,7 @@ c
     
     <modules>
         <module>event</module>
+        <module>base_view</module>
     </modules>
-    
-    <properties>
-        <glassfish.autodeploy>C:\Users\fportes\Documents</glassfish.autodeploy>
-    </properties>
     
 </project>
