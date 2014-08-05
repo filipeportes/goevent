@@ -24,7 +24,7 @@ Atualmente o projeto conta com os seguintes bundles OSGi:
 Execução
 ========
 
-Para testar o projeto é necessário utilizar o servidor Glassfish 4, e instalar cada .jar ou .war como um bundle OSGi através do painél visual (localhost:4848), ou copiá-los para a pasta <glassfish>/glassfish/domains/domain1/autodeploy/bundles/
+Para testar o projeto é necessário utilizar o servidor Glassfish 4, e instalar cada .jar ou .war como um bundle OSGi através do painél visual (localhost:4848), ou copiá-los para a pasta &lt;glassfish&gt;/glassfish/domains/domain1/autodeploy/bundles/
 
 Apache Felix WebConsole
 =======================
@@ -33,6 +33,6 @@ Apache Felix WebConsole
 
 a forma mais fácil de instalar esse bundle é:
 - fazer o download da versão <a href="http://ftp.unicamp.br/pub/apache//felix/org.apache.felix.webconsole-4.2.2-all.jar">all-in-one</a>
-- copiá-la para a pasta <glassfish>/glassfish/modules/autostart/; 
+- copiá-la para a pasta &lt;glassfish&gt;/glassfish/modules/autostart/; 
 - acessar a url: http://localhost:8080/osgi/system/console/bundles
 - use usuario e senha: admin
