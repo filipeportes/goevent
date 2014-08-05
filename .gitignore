@@ -1,3 +1,5 @@
 /event/event_view_fragment/target/
 /event_view/target/
 /base_view/target/
+/event/event_api/target/
+/event/event_dao/target/
