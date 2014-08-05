@@ -6,8 +6,8 @@ projeto de referência para uma arquitetura modular baseada em Java EE e OSGi
 Atualmente o projeto conta com os seguintes bundles OSGi:
 
 <uL>
-	<li>goevent - projeto raiz: bundle WAB (web aplication bundle) raiz da aplicação, contendo templates facelets
-		<ul><li>base_view</li></ul>
+	<li>goevent: projeto raiz 
+		<ul><li>base_view: bundle WAB (web aplication bundle) raiz da aplicação, contendo templates facelets</li></ul>
 		<ul>
 			<li>event: projeto raiz do módulo de eventos
 				<ul>
