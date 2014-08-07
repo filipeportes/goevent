@@ -7,12 +7,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.gojava.goevent.event</groupId>
-    <artifactId>event_view_fragment</artifactId>
+    <groupId>org.gojava.goevent.person</groupId>
+    <artifactId>person_view_fragment</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
-    <name>event_view_fragment</name>
+    <name>person_view_fragment</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,8 +20,8 @@
     
     <dependencies>
         <dependency>
-            <groupId>org.gojava.goevent.event</groupId>
-            <artifactId>event_api</artifactId>
+            <groupId>org.gojava.goevent.person</groupId>
+            <artifactId>person_api</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>

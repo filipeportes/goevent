@@ -8,13 +8,15 @@
     </parent>
   
     <groupId>org.gojava.goevent</groupId>
-    <artifactId>event</artifactId>
+    <artifactId>person</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>event</name>
+    <name>person</name>
+
     <modules>
-        <module>event_repository</module>
-        <module>event_api</module>
-        <module>event_view_fragment</module>
+        <module>person_repository</module>
+        <module>person_api</module>
+        <module>person_view_fragment</module>
   </modules>
+
 </project>

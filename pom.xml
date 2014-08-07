@@ -132,7 +132,8 @@
     </build>
     
     <modules>
-        <module>event</module>
+   	<module>person</module> 
+	<module>event</module>
         <module>base_view</module>
     </modules>
     

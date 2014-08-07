@@ -3,3 +3,10 @@
 /base_view/target/
 /event/event_api/target/
 /event/event_dao/target/
+/event/event_repository/target/
+/event (copy)/event_api/target/
+/event (copy)/event_repository/target/
+/event (copy)/event_view_fragment/target/
+/person/event_api/target/
+/person/event_repository/target/
+/person/event_view_fragment/target/

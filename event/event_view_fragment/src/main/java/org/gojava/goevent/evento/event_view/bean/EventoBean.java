@@ -14,7 +14,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import org.glassfish.osgicdi.OSGiService;
-import org.gojava.goevent.event.event_api.dao.EventoDAO;
+import org.gojava.goevent.event.event_api.repository.EventoRepository;
 import org.gojava.goevent.event.event_api.model.Evento;
 
 /**
@@ -27,7 +27,7 @@ public class EventoBean {
 
     @Inject
     @OSGiService(dynamic = true)
-    private EventoDAO eventoDAO;
+    private EventoRepository eventoRepository;
     
     private Evento evento;
     
@@ -37,7 +37,7 @@ public class EventoBean {
 
         getEvento().setDataInicio(new Date());
 
-        eventoDAO.persist(evento);
+        eventoRepository.persist(evento);
         
         eventos.add(evento);
         
@@ -49,7 +49,7 @@ public class EventoBean {
 
     public void excluir(Evento evento) {
 
-        eventoDAO.remove(evento);
+        eventoRepository.remove(evento);
         
         eventos.remove(evento);
         
@@ -68,17 +68,9 @@ public class EventoBean {
         this.evento = evento;
     }
 
-    public EventoDAO getEventoDAO() {
-        return eventoDAO;
-    }
-
-    public void setEventoDAO(EventoDAO eventoDAO) {
-        this.eventoDAO = eventoDAO;
-    }
-
     public List<Evento> getEventos() {
         if(eventos == null){
-            eventos = eventoDAO.findAll();
+            eventos = eventoRepository.findAll();
         }
         return eventos;
     }

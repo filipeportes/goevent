@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="/WEB-INF/template/template.xhtml">
+
+            <ui:define name="conteudo">
+                <h:form>
+
+                    <h:panelGrid columns="2" >
+                        <h:outputLabel value="Numero Inscrição: " />
+                        <p:inputText value="#{participanteBean.participante.numeroInscricao}"  />
+                        
+                        <h:outputLabel value="Nome: " />
+                        <p:inputText value="#{participanteBean.participante.nome}"  />
+
+                        <h:outputLabel value="Telefone: " />
+                        <p:inputText value="#{participanteBean.participante.telefone}"  />
+                        
+                        <h:outputLabel value="Email: " />
+                        <p:inputText value="#{participanteBean.participante.email}"  />
+                    </h:panelGrid>
+                   
+                    <p:commandButton action="#{participanteBean.salvar}" value="Salvar" update="tableParticipantes"/>
+                    <br/>
+
+                    <p:dataTable id="tableParticipantes" var="participante" value="#{participanteBean.participantes}">  
+                        
+                        <p:column headerText="Numero">  
+                            <h:outputText value="#{participante.numeroInscricao}" />  
+                        </p:column>  
+                        
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{participante.nome}" />  
+                        </p:column>  
+
+                        <p:column headerText="Telefone">  
+                            <h:outputText value="#{participante.telefone}" />  
+                        </p:column>  
+                        
+                        <p:column headerText="Telefone">  
+                            <h:outputText value="#{participante.email}" />  
+                        </p:column>  
+                        
+                        <p:column headerText="Ações">  
+                            
+                        </p:column>  
+
+                    </p:dataTable>  
+
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
